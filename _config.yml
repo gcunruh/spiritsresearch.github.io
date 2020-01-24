@@ -1,2 +1,5 @@
 theme: jekyll-theme-cayman
 title: Distilled Spirits Research
+
+github:
+  is_project_page: false
