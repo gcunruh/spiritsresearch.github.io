@@ -33,7 +33,7 @@
       </div>
       <form class="form-inline" name="submit-to-google-sheet">
         <input class="form-control mr-sm-2" style="border-radius: 14px;" name="email" type="email" placeholder="Email" aria-label="Email" required>
-        <button class="btn btn-success my-2 my-sm-0" type="submit">Learn More</button>
+        <button id="subBtn" class="btn btn-success my-2 my-sm-0" type="submit">Learn More</button>
       </form>
     </nav>
 
@@ -74,10 +74,12 @@
     <script>
       const scriptURL = 'https://script.google.com/macros/s/AKfycbx1b2nLvKUi6qWdxfTgw82-_4G2PUEZP_K35UaNpMehHHI6AbNT/exec'
       const form = document.forms['submit-to-google-sheet']
+      var btn = document.getElementById("subBtn")
 
       form.addEventListener('submit', e => {
         e.preventDefault()
         fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+          btn.innerHTML = 'Success!';
           .then(response => console.log('Success!', response))
           .catch(error => console.error('Error!', error.message))
       })
