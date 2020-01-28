@@ -33,7 +33,7 @@
       </div>
       <form class="form-inline" name="submit-to-google-sheet">
         <input class="form-control mr-sm-2" name="email" type="email" placeholder="Email" aria-label="Email" required>
-        <button class="btn btn-success my-2 my-sm-0" type="submit">Learn More</button>
+        <button class="btn btn-success my-2 my-sm-0" type="submit" disabled, false>Learn More</button>
       </form>
     </nav>
 
@@ -79,6 +79,7 @@
         e.preventDefault()
         fetch(scriptURL, { method: 'POST', body: new FormData(form)})
           .then(response => console.log('Success!', response))
+          .then(("#btnSubmit").attr("disabled", true);
           .catch(error => console.error('Error!', error.message))
       })
     </script>
