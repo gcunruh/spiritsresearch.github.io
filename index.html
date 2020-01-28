@@ -79,7 +79,7 @@
         e.preventDefault()
         fetch(scriptURL, { method: 'POST', body: new FormData(form)})
           .then(response => console.log('Success!', response))
-          .then(("#btnSubmit").attr("disabled", true);
+          .then(("#btnSubmit").attr("disabled", true))
           .catch(error => console.error('Error!', error.message))
       })
     </script>
