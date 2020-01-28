@@ -71,16 +71,23 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script>
-      const scriptURL = 'https://script.google.com/macros/s/AKfycbx1b2nLvKUi6qWdxfTgw82-_4G2PUEZP_K35UaNpMehHHI6AbNT/exec'
-      const form = document.forms['submit-to-google-sheet']
-
-      form.addEventListener('submit', e => {
-        e.preventDefault()
-        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-          .then(response => console.log('Success!', response))
-          .catch(error => console.error('Error!', error.message))
-      })
+    <script type="text/javascript">
+    $(document).ready(function(){
+        // References:
+        var $form = $('#myForm');
+        var $subm = $('#mySubmit');
+        var $impt = $form.find(':button').not(':input, :submit, :reset, :hidden');
+    // Submit function:
+        $form.submit(function(){
+            $.post($(this).attr('action'), $(this).serialize(), function(response){
+          // On success, clear all inputs;
+                $impt.val('').attr('value','').removeAttr('checked').removeAttr('selected');
+      // Disable the submit button:
+                $subm.prop('disabled', true);
+            },'json');
+            return false;
+        });
+    });
     </script>
   </body>
 </html>
