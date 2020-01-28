@@ -76,7 +76,7 @@
         // References:
         var $form = $('#myForm');
         var $subm = $('#mySubmit');
-        var $impt = $form.find(':input').not(':button, :submit, :reset, :hidden');
+        var $impt = $form.find(':button').not(':input, :submit, :reset, :hidden');
     // Submit function:
         $form.submit(function(){
             $.post($(this).attr('action'), $(this).serialize(), function(response){
